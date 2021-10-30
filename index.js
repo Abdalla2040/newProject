@@ -36,7 +36,7 @@ app.post('/addUser', (req, res)=>{
         return res.status(500);
     }
 });
-//console.log(User);
+
 app.get('/getUser', (req, res)=>{
     try{
         return res.status(200).json(User);
