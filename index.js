@@ -1,4 +1,3 @@
-const { json } = require('express');
 const express = require('express');
 const app = express();
 const nodemon = require('nodemon');
@@ -29,10 +28,9 @@ let User = {
     }
 }
 
-app.post('/sendUser',(req, res)=>{
+app.post('/addUser', (req, res)=>{
     try{
-        let value = res.status(200).json(User);
-        return value;
+        return res.status(200).json('Added user ' + req.body.username + ' successfully');
     }
     catch{
         return res.status(500);
@@ -41,9 +39,7 @@ app.post('/sendUser',(req, res)=>{
 //console.log(User);
 app.get('/getUser', (req, res)=>{
     try{
-        return res.status(200).json(req.body.value);
-        
-       
+        return res.status(200).json(User);
     }
     catch{
         return res.status(500);
@@ -52,5 +48,5 @@ app.get('/getUser', (req, res)=>{
 
 
 app.listen(PORT, ()=>{
-    console.log('Served started on port', PORT);
+    console.log('Served started on port ' + PORT);
 })
